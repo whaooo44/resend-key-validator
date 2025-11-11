@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resend API Key 批量校验工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resend API Key 批量校验工具</h1>
+            <p>批量管理和验证您的 Resend API Keys</p>
+        </header>
+
+        <main>
+            <!-- 添加单个Key区域 -->
+            <section class="add-key-section">
+                <h2>添加 API Key</h2>
+                <form id="addKeyForm">
+                    <div class="form-group">
+                        <label for="domain">域名:</label>
+                        <input type="text" id="domain" name="domain" required placeholder="example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="apiKey">API Key:</label>
+                        <input type="text" id="apiKey" name="apiKey" required placeholder="re_xxxxxxxxx">
+                    </div>
+                    <button type="submit">添加 Key</button>
+                </form>
+            </section>
+
+            <!-- 批量操作区域 -->
+            <section class="batch-operations">
+                <h2>批量操作</h2>
+                <div class="batch-buttons">
+                    <button id="batchImportBtn">批量导入</button>
+                    <button id="batchExportBtn">批量导出</button>
+                    <button id="batchValidateBtn">批量校验</button>
+                </div>
+            </section>
+
+            <!-- API Keys列表 -->
+            <section class="keys-list-section">
+                <h2>API Keys 列表</h2>
+                <div id="keysList" class="keys-list">
+                    <p class="empty-message">暂无 API Keys，请添加或导入</p>
+                </div>
+            </section>
+
+            <!-- 校验结果区域 -->
+            <section id="validationResults" class="validation-results" style="display: none;">
+                <h2>校验结果</h2>
+                <div id="resultsSummary" class="results-summary"></div>
+                <div id="resultsList" class="results-list"></div>
+            </section>
+        </main>
+
+        <!-- 模态框 - 批量导入 -->
+        <div id="importModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>批量导入 API Keys</h2>
+                <p>请按以下格式输入，每对域名和API key之间用空行分隔：</p>
+                <pre>domain1
+key1
+
+domain2
+key2</pre>
+                <textarea id="importData" rows="10" placeholder="domain1&#10;key1&#10;&#10;domain2&#10;key2"></textarea>
+                <div class="modal-buttons">
+                    <button id="confirmImport">导入</button>
+                    <button id="cancelImport">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加载提示 -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>正在处理中...</p>
+        </div>
+
+        <!-- 消息提示 -->
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
