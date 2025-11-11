@@ -8,51 +8,66 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Resend API Key 批量校验工具</h1>
-            <p>批量管理和验证您的 Resend API Keys</p>
+        <header class="site-header">
+            <div class="brand">
+                <div class="logo" aria-hidden="true">🔑</div>
+                <div>
+                    <h1>Resend API Key 校验</h1>
+                    <p class="muted">批量管理与验证您的 Resend API Keys</p>
+                </div>
+            </div>
         </header>
 
-        <main>
-            <!-- 添加单个Key区域 -->
-            <section class="add-key-section">
-                <h2>添加 API Key</h2>
-                <form id="addKeyForm">
-                    <div class="form-group">
-                        <label for="domain">域名:</label>
-                        <input type="text" id="domain" name="domain" required placeholder="example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="apiKey">API Key:</label>
-                        <input type="text" id="apiKey" name="apiKey" required placeholder="re_xxxxxxxxx">
-                    </div>
-                    <button type="submit">添加 Key</button>
-                </form>
-            </section>
-
-            <!-- 批量操作区域 -->
-            <section class="batch-operations">
-                <h2>批量操作</h2>
-                <div class="batch-buttons">
-                    <button id="batchImportBtn">批量导入</button>
-                    <button id="batchExportBtn">批量导出</button>
-                    <button id="batchValidateBtn">批量校验</button>
+        <main class="grid">
+            <aside class="panel left">
+                <!-- 添加单个Key区域 -->
+                <div class="card">
+                    <h3>添加 API Key</h3>
+                    <form id="addKeyForm" class="form">
+                        <div class="form-row">
+                            <label for="domain">域名</label>
+                            <input type="text" id="domain" name="domain" required placeholder="example.com">
+                        </div>
+                        <div class="form-row">
+                            <label for="apiKey">API Key</label>
+                            <input type="text" id="apiKey" name="apiKey" required placeholder="re_xxxxxxxxx">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary">添加 Key</button>
+                        </div>
+                    </form>
                 </div>
-            </section>
 
-            <!-- API Keys列表 -->
-            <section class="keys-list-section">
-                <h2>API Keys 列表</h2>
-                <div id="keysList" class="keys-list">
-                    <p class="empty-message">暂无 API Keys，请添加或导入</p>
+                <!-- 批量操作区域 -->
+                <div class="card">
+                    <h3>批量操作</h3>
+                    <div class="batch-buttons">
+                        <button id="batchImportBtn" class="btn">批量导入</button>
+                        <button id="batchExportBtn" class="btn">批量导出</button>
+                        <button id="batchValidateBtn" class="btn secondary">批量校验</button>
+                    </div>
                 </div>
-            </section>
+            </aside>
 
-            <!-- 校验结果区域 -->
-            <section id="validationResults" class="validation-results" style="display: none;">
-                <h2>校验结果</h2>
-                <div id="resultsSummary" class="results-summary"></div>
-                <div id="resultsList" class="results-list"></div>
+            <section class="panel right">
+                <!-- API Keys列表 -->
+                <div class="card keys-card">
+                    <div class="card-header">
+                        <h3>API Keys 列表</h3>
+                    </div>
+                    <div id="keysList" class="keys-list">
+                        <p class="empty-message">暂无 API Keys，请添加或导入</p>
+                    </div>
+                </div>
+
+                <!-- 校验结果区域 -->
+                <div id="validationResults" class="card validation-results" style="display: none;">
+                    <div class="card-header">
+                        <h3>校验结果</h3>
+                    </div>
+                    <div id="resultsSummary" class="results-summary"></div>
+                    <div id="resultsList" class="results-list"></div>
+                </div>
             </section>
         </main>
 
